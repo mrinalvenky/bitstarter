@@ -6,7 +6,7 @@ var len = 0;
 
 fs.readFileSync('index.html', function (err, data) {
   if (err) throw err;
-  len = buf.write(data);
+  len = buf.write(data, 0);
 });
 
 app.get('/', function(request, response) {
