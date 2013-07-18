@@ -1,9 +1,16 @@
 var express = require('express');
-
+var buf = new Buffer(256);
 var app = express.createServer(express.logger());
+var fs = require('fs');
+var len = 0;
+
+fs.readFile('/etc/passwd', function (err, data) {
+  if (err) throw err;
+  len = buf.write(data);
+});
 
 app.get('/', function(request, response) {
-  response.send('Hello World2!');
+  response.send(buf.toString("utf-8", 0, len));
 });
 
 var port = process.env.PORT || 5000;
