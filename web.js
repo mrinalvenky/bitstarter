@@ -6,11 +6,11 @@ var len = 0;
 
 fs.readFileSync('index.html', function (err, data) {
   if (err) throw err;
-  buf = data;
+  var buf = data;
 });
 
 app.get('/', function(request, response) {
-  response.send(buf.toString("utf-8", 0, len));
+  response.send(buf.toString('utf8', 0, len));
 });
 
 var port = process.env.PORT || 5000;
